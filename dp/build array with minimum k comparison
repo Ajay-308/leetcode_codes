@@ -1,0 +1,36 @@
+class Solution {
+private:
+    int N, M, K;
+    int MOD = 1e9 + 7;
+    int t[51][51][101];
+
+    int solve(int i, int sc, int max) {
+        if (i == N) {
+            if (sc == K) {
+                return 1;
+            }
+            return 0;
+        }
+        if (t[i][sc][max] != -1) {
+            return t[i][sc][max];
+        }
+        int ans = 0;
+        for (int x = 1; x <= M; x++) {
+            if (x > max) {
+                ans = (ans + solve(i + 1, sc + 1, x)) % MOD;
+            } else {
+                ans = (ans + solve(i + 1, sc, max)) % MOD;
+            }
+        }
+        return t[i][sc][max] = ans % MOD;
+    }
+
+public:
+    int numOfArrays(int n, int m, int k) {
+        N = n;
+        M = m;
+        K = k;
+        memset(t, -1, sizeof(t));
+        return solve(0, 0, 0);
+    }
+};
