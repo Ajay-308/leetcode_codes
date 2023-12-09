@@ -26,6 +26,22 @@ def reverseStr(str):
     # i is the left pointer and j is the right pointer
     while i < j:
         str[i], str[j] = str[j], str[i]
+
+
+#using  recurrsion
+
+# Recursive Python program to reverse a string
+ 
+def recursiveReverse(str, i = 0):
+    n = len(str)
+ 
+    if i == n // 2:
+        return
+    # Swap the i and n-i-1 character
+    str[i], str[n-i-1] = str[n-i-1], str[i]
+     
+    # Call Recursive function after incrementing i.
+    recursiveReverse(str, i+1)
  
         i += 1
         j -= 1
