@@ -1,0 +1,44 @@
+The given algorithm performs the task of sorting the array A in ascending order using a divide and conquer approach. The algorithm divides the array into three parts, recursively sorts the first and last parts, and then sorts the first part again to ensure that any large elements that were initially in the middle of the array are now at the end of the array.
+
+The time complexity of this algorithm is O(n log n), and the space complexity is O(n) due to the recursion stack.
+
+Here's the implementation of the modified algorithm in C++:
+
+c
+Copy code
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+void modifiedAlgo(int arr[], int l, int r) {
+    if (r - l > 1) {
+        int m = (2 * (r - l) / 3) + l;
+        modifiedAlgo(arr, l, m);
+        modifiedAlgo(arr, r - m + l, r);
+        modifiedAlgo(arr, l, m);
+    }
+    if (r - l == 1 && arr[l] > arr[r]) {
+        swap(arr[l], arr[r]);
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2, 7, 1, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    modifiedAlgo(arr, 0, n - 1);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+In the modified algorithm, we replaced m = ⌈2n/3⌉ with m = ⌊2n/3⌋ to get the floor instead of the ceiling of 2n/3.
+
+This modified algorithm still sorts the array A in ascending order using a divide and conquer approach, but with a different split point that changes the order in which the subarrays are sorted. The time complexity and space complexity are the same as the original algorithm.
+
+It's worth noting that the modified algorithm might result in a slightly different sorting order compared to the original algorithm for certain input arrays, but both algorithms will still correctly sort the array.
