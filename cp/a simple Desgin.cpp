@@ -1,11 +1,5 @@
 
-//
-// Certainly! The line while (t--) is a loop control statement in C++. Let's break it down in an easy way:
 
-// t is a variable that typically represents the number of test cases or the number of times you want to repeat a certain block of code.
-
-// while (t--) is a loop that continues executing the code inside its block as long as the value of t is greater than zero. The -- is a decrement operation, meaning it reduces the value of t by 1 each time the loop runs.
-#include <iostream>
 #include <stdio.h>
 
 using namespace std;
