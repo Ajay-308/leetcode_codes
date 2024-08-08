@@ -16,10 +16,17 @@ struct  Node{
 
 };
 
+
 int main(){
     vector<int> v = {10,20,30};
     Node head = Node(v[0] , NULL);
-    int* temp = &v[0];
-    cout<<temp<<endl;
-
+    Node* temp  = &head;
+    for(int i=1;i<v.size();i++){
+        Node* newNode = new Node(v[i],NULL);
+        temp->next = newNode;
+        temp = newNode;
+    }
+    
+    cout<<head.data<<endl;
+    return 0;
 }
