@@ -1,3 +1,6 @@
+
+// https://leetcode.com/problems/satisfiability-of-equality-equations/
+//leetcode no :-990
 class Solution {
 public:
     vector<int> par;
